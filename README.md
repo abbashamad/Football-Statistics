@@ -99,7 +99,6 @@ Databasens indhold følger ikke med, når repository klones.
 - Tilgængelige data og spillersider afhænger af API-abonnementet.
 - Gemte data opdateres ikke automatisk.
 - Første hentning af en ny holdliste eller spillerside bruger stadig et API-kald.
-- Hurtige holdskift under indlæsning kan blande spillerresultater.
 - AI-svar er ikke baseret på live-statistik og kan indeholde fejl.
 - Projektet er beregnet til lokal brug og har ingen loginfunktion.
 
