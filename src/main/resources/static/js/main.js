@@ -20,6 +20,8 @@ let selectedPlayer = null; //Her gemmer vi den valgte spiller.
 let selectedTeamId = null;
 let currentPage = 1;
 let totalPage = 1;
+let teamsRequestsNumber = 0;
+
 //De husker det valgte hold, den senest hentede side og antallet af sider.
 
 // 3. Event listeners
@@ -40,6 +42,9 @@ function resetPlayerSelection() {
 
 //Her så henter vi selve beskeden, men efter at vi har fetchet.
 async function getTeams() {
+    teamsRequestsNumber = teamsRequestsNumber + 1;
+    const requestNumber = teamsRequestsNumber;
+
     resetPlayerSelection();
 
     selectedTeamId = null;
@@ -59,6 +64,10 @@ async function getTeams() {
         }
 
         const data = await response.json(); //Laver response om til JavaScript object.
+
+        if (requestNumber !== teamsRequestsNumber){
+            return;
+        }
 
         if (Object.keys(data.errors).length > 0){
             throw new Error(
@@ -83,7 +92,9 @@ async function getTeams() {
 
         message.textContent = data.response.length + " teams found";
     } catch (error) {
-        message.textContent = error.message;
+       if (requestNumber == teamsRequestsNumber){
+           message.textContent = error.message;
+       }
     }
 }
 
