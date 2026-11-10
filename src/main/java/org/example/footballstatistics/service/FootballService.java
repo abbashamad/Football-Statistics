@@ -37,5 +37,13 @@ public class FootballService {
 
     }
 
+    public String getPlayers(int teamId){
+        return webClient.get()
+                .uri("/players?team={team}&season=2023&page=1", teamId)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block(Duration.ofSeconds(20));
+    }
+
 
 }
