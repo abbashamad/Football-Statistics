@@ -19,7 +19,7 @@ public class OpenAiService {
     public OpenAiService(
             @Value("${app.openai.url}") String url,
             @Value("${app.openai.api-key}") String apiKey,
-            @Value("${app.openai.model}") String model){
+            @Value("${app.openai.model}") String model) {
 
         this.model = model;
 
@@ -29,11 +29,11 @@ public class OpenAiService {
                 .build();
     }
 
-    public String askQuestion(String playerName, String question){
+    public String askQuestion(String playerName, String question) {
         ChatMessage instructions = new ChatMessage(
                 "system",
                 "You are a football expert. Answer questions about "
-                + playerName + ". If you are unsure about fact, say so."
+                        + playerName + ". If you are unsure about fact, say so."
         );
 
         ChatMessage userMessage = new ChatMessage("user", question);

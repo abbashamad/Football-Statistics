@@ -15,7 +15,8 @@
 
 <!--Value indeholder ID'et af ligaerne som API'et skal bruge-->
 <select id="league">
-    <option value="119">SuperLiga</option>
+    <option value="" selected disabled>Choose a league</option>
+    <option value="119">Superliga</option>
     <option value="39">Premier League</option>
     <option value="140">La Liga</option>
     <option value="78">Bundesliga</option>
@@ -23,23 +24,24 @@
     <option value="61">Ligue 1</option>
 </select>
 
-<button id="load-button">Show teams</button>
 <p id="message"></p>
 <ul id="teams"></ul>
 
 <h1>Players</h1>
 <p id="players-message"></p>
 <ul id="players"></ul>
+<button id="load-more-button" hidden>Load more players</button>
 
 <!--Vi sætter ask feltet i en section for at gemme det. hidden gør at sektionen starter med at være skjult.-->
 <section id="ask-section" hidden>
-<h2>Ask about <span id="selected-player-name"></span></h2> <!--Et span lader os ændre en del af teksten i overskriften-->
+    <h2>Ask about <span id="selected-player-name"></span></h2>
+    <!--Et span lader os ændre en del af teksten i overskriften-->
 
-<label for="question">Your question</label>
-<input id="question" type="text">
+    <label for="question">Your question</label>
+    <input id="question" type="text">
 
-<button id="ask-button">Ask</button>
-<p id="answer"></p>
+    <button id="ask-button">Ask</button>
+    <p id="answer"></p>
 
     <p>AI answers may be inaccurate and are not based on live statistics.</p>
 </section>

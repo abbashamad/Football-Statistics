@@ -12,18 +12,18 @@ public class FootballController {
 
     private final FootballService footballService;
 
-    FootballController(FootballService footballService){
+    FootballController(FootballService footballService) {
         this.footballService = footballService;
     }
 
     @GetMapping
-    public String getFootball(@RequestParam int league){
+    public String getFootball(@RequestParam int league) {
         return footballService.getTeam(league);
     }
 
     @GetMapping("/players")
-    public String getPlayers(@RequestParam int team) {
-        return footballService.getPlayers(team);
+    public String getPlayers(@RequestParam int team, @RequestParam(defaultValue = "1") int page) {
+        return footballService.getPlayers(team, page);
     }
 
 

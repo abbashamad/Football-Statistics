@@ -13,23 +13,23 @@ public class FootballService {
     private final WebClient webClient;
 
     public FootballService(@Value("${app.football.url}") String url,
-                           @Value("${app.football.api-key}") String key){
+                           @Value("${app.football.api-key}") String key) {
 
-        this.webClient= WebClient.builder()
+        this.webClient = WebClient.builder()
                 .baseUrl(url)
                 .defaultHeader("x-apisports-key", key)
                 .build();
 
     }
 
-    public String getTeam(int leagueId){
+    public String getTeam(int leagueId) {
         try {
             return webClient.get()
                     .uri("/teams?league={league}&season=2023", leagueId)
                     .retrieve()
                     .bodyToMono(String.class)
                     .block(Duration.ofSeconds(20));
-        } catch (WebClientResponseException e){
+        } catch (WebClientResponseException e) {
             System.out.println("Football API status: " + e.getStatusCode());
             System.out.println("Football API message: " + e.getResponseBodyAsString());
             throw e;
@@ -37,9 +37,9 @@ public class FootballService {
 
     }
 
-    public String getPlayers(int teamId){
+    public String getPlayers(int teamId, int page) {
         return webClient.get()
-                .uri("/players?team={team}&season=2023&page=1", teamId)
+                .uri("/players?team={team}&season=2023&page={page}", teamId, page)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block(Duration.ofSeconds(20));

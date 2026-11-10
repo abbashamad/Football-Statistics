@@ -19,7 +19,7 @@ public class PlayerController {
     }
 
     @PostMapping(value = "/ask", produces = MediaType.APPLICATION_JSON_VALUE)//Fortæller at vores svar er JSON
-    public String ask(@RequestBody PlayerQuestion request){
+    public String ask(@RequestBody PlayerQuestion request) {
         return openAiService.askQuestion(
                 request.getPlayerName(),
                 request.getQuestion()
