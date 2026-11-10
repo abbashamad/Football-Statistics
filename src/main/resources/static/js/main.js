@@ -5,17 +5,26 @@ const message = document.getElementById("message");
 const teamList = document.getElementById("teams");
 const playerMessage = document.getElementById("players-message");
 const playersList = document.getElementById("players");
+const askSection = document.getElementById("ask-section");
+const selectedPlayerName = document.getElementById("selected-player-name");
+const leagueSelect = document.getElementById("league");
 
 let selectedPlayer = null; //Her gemmer vi den valgte spiller.
 
 
 //Her så henter vi selve beskeden, men efter at vi har fetchet.
 async function getTeams(){
+   selectedPlayer = null;
+   playersList.textContent = "";
+   playerMessage.textContent = "";
+   askSection.hidden = true;
+   answer.textContent = "";
+
    message.textContent = "Loading teams...";
    teamList.textContent = "";
 
    try {
-       const response = await fetch("api/v1/football");
+       const response = await fetch("api/v1/football?league=" + leagueSelect.value);//leagueSelect.value læser ID'et fra den valgte option.
 
        if (!response.ok){
            throw new Error("Could not load teams")
@@ -45,6 +54,9 @@ async function getTeams(){
 }
 
 async function getPlayers(teamId){
+    askSection.hidden = true;
+    selectedPlayer = null;
+    answer.textContent = "";
 
     playerMessage.textContent = "Loading players...";
     playersList.textContent = "";
@@ -68,6 +80,10 @@ async function getPlayers(teamId){
 
             playerButton.addEventListener("click", function (){
                 selectedPlayer = item.player;
+                selectedPlayerName.textContent = selectedPlayer.name;
+                askSection.hidden = false;
+                questionInput.value = "";
+                answer.textContent = "";
                 message.textContent = "You selected " + selectedPlayer.name;
             });
 

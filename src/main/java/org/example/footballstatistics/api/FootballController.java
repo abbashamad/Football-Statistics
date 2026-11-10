@@ -17,8 +17,8 @@ public class FootballController {
     }
 
     @GetMapping
-    public String getFootball(){
-        return footballService.getTeam();
+    public String getFootball(@RequestParam int league){
+        return footballService.getTeam(league);
     }
 
     @GetMapping("/players")

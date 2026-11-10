@@ -22,10 +22,10 @@ public class FootballService {
 
     }
 
-    public String getTeam(){
+    public String getTeam(int leagueId){
         try {
             return webClient.get()
-                    .uri("/teams?league=119&season=2023")
+                    .uri("/teams?league={league}&season=2023", leagueId)
                     .retrieve()
                     .bodyToMono(String.class)
                     .block(Duration.ofSeconds(20));

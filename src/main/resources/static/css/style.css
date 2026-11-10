@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f2;
+    color: #20352b;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+h1 {
+    color: #176b43;
+}
+
+button {
+    background-color: #176b43;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #105032;
+}
+
+button:disabled {
+    background-color: #738078;
+    cursor: wait;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 24px;
+}
+
+input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #aabbb0;
+    border-radius: 6px;
+    font: inherit;
+}
+
+#answer {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}

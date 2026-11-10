@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Football Statistics</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <h1>Football Statistics</h1>
+
+<p>Explore teams and players from the 2023 Danish Superliga season.</p>
+
+<label for="league">Choose a league</label>
+
+<!--Value indeholder ID'et af ligaerne som API'et skal bruge-->
+<select id="league">
+    <option value="119">SuperLiga</option>
+    <option value="39">Premier League</option>
+    <option value="140">La Liga</option>
+    <option value="78">Bundesliga</option>
+    <option value="135">Serie A</option>
+    <option value="61">Ligue 1</option>
+</select>
+
 <button id="load-button">Show teams</button>
 <p id="message"></p>
 <ul id="teams"></ul>
@@ -15,7 +31,9 @@
 <p id="players-message"></p>
 <ul id="players"></ul>
 
-<h2>Ask about the selected player</h2>
+<!--Vi sætter ask feltet i en section for at gemme det. hidden gør at sektionen starter med at være skjult.-->
+<section id="ask-section" hidden>
+<h2>Ask about <span id="selected-player-name"></span></h2> <!--Et span lader os ændre en del af teksten i overskriften-->
 
 <label for="question">Your question</label>
 <input id="question" type="text">
@@ -23,6 +41,8 @@
 <button id="ask-button">Ask</button>
 <p id="answer"></p>
 
+    <p>AI answers may be inaccurate and are not based on live statistics.</p>
+</section>
 </body>
 <script src="js/main.js"></script>
 </html>
